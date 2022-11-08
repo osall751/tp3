@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row col-6">
+ <table class="table">
+      <tbody>
+      <tr>
+        <td colspan="4">
+          <input type="text" class="col-12" name="" id="" style="padding: 50px ; text-align:right; background-color: darkgray;" value="{{input}}" />
+        </td>
+      </tr>
+      <tr *ngFor="let ligne of tab">
+        <td *ngFor="let item of ligne">
+          <button class="col-12" (click)="boutonPresse(item)" >{{ item }}</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
