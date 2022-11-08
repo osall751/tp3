@@ -10,19 +10,36 @@ export class CalculatriceComponent implements OnInit {
   tab = [
     ['%', 'CE', 'C', 'EFF'],
     ['1/x', 'X²', 'RAC', '/'],
-    [7, 8, 9, 'X'],
+    [7, 8, 9, '*'],
     [4, 5, 6, '-'],
     [1, 2, 3, '+'],
     ['+/-', 0, ',', '='],
   ];
+
+  operateur = '';
+  resultat = 0;
+
   constructor() {}
 
   ngOnInit() {}
 
   boutonPresse(val: any) {
-    console.log(typeof val);
     if (typeof val === 'number') {
       this.input += val;
+    } else {
+      if (val === '+' || val === '-' || val === '*' || val === '/') {
+        this.operateur = val;
+        this.resultat = Number.parseFloat(this.input);
+        this.input = '';
+      }
+      if (val === '=') {
+        if (this.operateur === '+') {
+          this.resultat += Number.parseFloat(this.input);
+          this.input = this.resultat+"";
+          console.log(' +++ resultat=' + this.resultat);
+          console.log('input =' + this.input);
+        }
+      }
     }
   }
 }
